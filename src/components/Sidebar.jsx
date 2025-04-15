@@ -4,6 +4,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { CartContext } from "./../contexts/CartContext";
 import CartItem from "./CartItem";
 import { FiTrash } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
@@ -42,6 +43,18 @@ const Sidebar = () => {
             <FiTrash />
           </div>
         </div>
+        <Link
+          to="/"
+          className="bg-gray-200 flex p-4 justify-center items-center text-black w-full font-medium"
+        >
+          View cart
+        </Link>
+        <Link
+          to="/"
+          className="bg-black flex p-4 justify-center items-center text-white w-full font-medium"
+        >
+          Checkout
+        </Link>
       </div>
     </div>
   );

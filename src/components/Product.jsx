@@ -28,7 +28,7 @@ const Product = ({ product }) => {
           </button>
           <Link
             to={`/product/${id}`}
-            className="w-12 h-12 bg-white flex justify-center items-center text-primary drop-shadow-xl"
+            className="w-12 h-12 bg-white flex justify-center items-center text-black drop-shadow-xl"
           >
             <BsEyeFill />
           </Link>
