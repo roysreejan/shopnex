@@ -1,12 +1,13 @@
 import React from "react";
 import WomanImg from "../assets/woman_hero.png";
 import bgHero from "../assets/bg_hero.svg";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
     <section
+      id="hero"
       className="h-[800px] bg-no-repeat bg-cover bg-center py-24"
       style={{ backgroundImage: `url(${bgHero})` }}
     >
@@ -47,7 +48,7 @@ const Hero = () => {
             transition={{ delay: 0.6 }}
           >
             <Link
-              to="/"
+              to="/#products"
               className="self-start uppercase font-semibold border-b-2 border-primary hover:text-red-500 transition"
             >
               Discover More

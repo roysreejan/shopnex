@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { BsBag } from "react-icons/bs";
 import { CartContext } from "../contexts/CartContext";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import Logo from "../assets/logo.svg";
 import { motion } from "framer-motion";
 
@@ -35,9 +35,17 @@ const Header = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Link to={"/"}>
-            <div>
-              <img className="w-[40px]" src={Logo} alt="Logo" />
+          <Link to={"/#hero"}>
+            <div className="flex items-center">
+              {/* Logo */}
+              <div className="mr-3">
+                <img className="w-[40px]" src={Logo} alt="ShopNex Logo" />
+              </div>
+
+              {/* ShopNex Name */}
+              <h2 className="text-2xl font-bold font-serif tracking-tight">
+                ShopNex
+              </h2>
             </div>
           </Link>
         </motion.div>
@@ -50,7 +58,7 @@ const Header = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Link
-            to="/"
+            to="/#hero"
             className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
           >
             Home
@@ -60,6 +68,12 @@ const Header = () => {
             className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
           >
             About Us
+          </Link>
+          <Link
+            to="/#products"
+            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
+          >
+            Products
           </Link>
           <Link
             to="/contact"

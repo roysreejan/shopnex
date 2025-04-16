@@ -19,7 +19,8 @@ const Home = () => {
       <Hero />
 
       <motion.section
-        className="py-16"
+        id="products" // This allows header "Products" link to scroll here
+        className="pt-24 pb-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}

@@ -5,8 +5,8 @@ import {
   FaTwitter,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import Logo from "../assets/logo.svg"; // Assuming logo is in assets
+import { HashLink as Link } from "react-router-hash-link";
+import Logo from "../assets/logo.svg";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -25,14 +25,14 @@ const Footer = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center mb-4">
-            <Link to={"/"}>
+            <Link to="/#hero" className="flex items-center">
               <div className="mr-3">
                 <img className="w-[40px]" src={Logo} alt="ShopNex Logo" />
               </div>
+              <h2 className="text-2xl font-bold font-serif tracking-tight">
+                ShopNex
+              </h2>
             </Link>
-            <h2 className="text-2xl font-bold font-serif tracking-tight">
-              ShopNex
-            </h2>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed">
             Elevate your wardrobe with our curated collection of stylish,
@@ -50,24 +50,24 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-3">Quick Links</h3>
           <ul className="space-y-2 text-gray-400 text-sm">
             <li>
-              <a href="/" className="hover:text-white transition">
+              <Link to="/#hero" className="hover:text-white transition">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/" className="hover:text-white transition">
-                Shop
-              </a>
+              <Link to="/#products" className="hover:text-white transition">
+                Products
+              </Link>
             </li>
             <li>
-              <a href="/about" className="hover:text-white transition">
+              <Link to="/about" className="hover:text-white transition">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/contact" className="hover:text-white transition">
+              <Link to="/contact" className="hover:text-white transition">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </motion.div>
