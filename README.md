@@ -34,7 +34,7 @@ Follow these steps to set up the project locally:
    ```
 
 2. Navigate to the project directory:
-  ```bash
+     ```bash
    cd shopnex
    ```
 
