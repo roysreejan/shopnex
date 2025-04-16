@@ -56,16 +56,16 @@ const Header = () => {
             Home
           </Link>
           <Link
-            to="/contact"
-            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
-          >
-            Contact
-          </Link>
-          <Link
             to="/about"
             className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
           >
             About Us
+          </Link>
+          <Link
+            to="/contact"
+            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
+          >
+            Contact
           </Link>
         </motion.nav>
 

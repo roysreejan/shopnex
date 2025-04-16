@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <section className="bg-gray-50 min-h-screen py-20 px-4 pt-36">
+    <section className="bg-gray-50 min-h-screen py-20 px-4 pt-32">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         {/* Title Animation */}
         <motion.h2
