@@ -62,6 +62,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
+          style={{ marginTop: '95px', position: 'relative', left: '-180px' }} 
         >
           <img src={WomanImg} alt="woman" />
         </motion.div>

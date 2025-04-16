@@ -32,13 +32,13 @@ const Header = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container px-[30px] lg:px-0 mx-auto flex items-center justify-between h-full">
+      <div className="container px-[15px] lg:px-0 mx-auto flex items-center justify-between h-full">
         {/* ShopNex Logo - Always visible */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="flex items-center"
+          className="flex items-center justify-center lg:justify-start"
         >
           <Link to={"/#hero"} onClick={() => setMobileMenuOpen(false)}>
             <div className="flex items-center">
@@ -50,9 +50,9 @@ const Header = () => {
           </Link>
         </motion.div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav - Centered */}
         <motion.nav
-          className="hidden md:flex items-center space-x-6"
+          className="hidden md:flex items-center justify-center space-x-6 w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -84,8 +84,8 @@ const Header = () => {
         </motion.nav>
 
         {/* Cart & Mobile Menu Button */}
-        <div className="flex items-center space-x-4 md:hidden">
-          {/* Cart Icon */}
+        <div className="flex items-center space-x-4">
+          {/* Cart Icon (Visible on Desktop & Mobile) */}
           <motion.div
             onClick={() => setIsOpen(!isOpen)}
             className="cursor-pointer flex relative"
@@ -99,8 +99,8 @@ const Header = () => {
             </div>
           </motion.div>
 
-          {/* Mobile Menu Toggle */}
-          <button onClick={toggleMobileMenu}>
+          {/* Mobile Menu Toggle (Visible only on mobile) */}
+          <button onClick={toggleMobileMenu} className="md:hidden">
             {mobileMenuOpen ? (
               <HiX className="text-3xl" />
             ) : (
