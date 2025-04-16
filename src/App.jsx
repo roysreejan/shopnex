@@ -5,6 +5,7 @@ import ProductDetails from './pages/ProductDetails';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/product/:id' element={<ProductDetails />} />
         </Routes>
         <Sidebar />
+        <Contact />
         <Footer />
       </Router>
     </div>
