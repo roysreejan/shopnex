@@ -1,23 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
-import { BsBag } from "react-icons/bs";
 import { CartContext } from "../contexts/CartContext";
 import { HashLink as Link } from "react-router-hash-link";
+import { BsBag } from "react-icons/bs";
+import { HiMenu, HiX } from "react-icons/hi";
 import Logo from "../assets/logo.svg";
 import { motion } from "framer-motion";
 
 const Header = () => {
-  // header state
   const [isActive, setIsActive] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
 
-  // event listener for scroll to change header state
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
-    });
-  });
+    const handleScroll = () => {
+      setIsActive(window.scrollY > 60);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
     <motion.header
@@ -29,20 +33,16 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container px-[30px] lg:px-0 mx-auto flex items-center justify-between h-full">
-        {/* Logo with motion */}
+        {/* ShopNex Logo - Always visible */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
+          className="flex items-center"
         >
-          <Link to={"/#hero"}>
+          <Link to={"/#hero"} onClick={() => setMobileMenuOpen(false)}>
             <div className="flex items-center">
-              {/* Logo */}
-              <div className="mr-3">
-                <img className="w-[40px]" src={Logo} alt="ShopNex Logo" />
-              </div>
-
-              {/* ShopNex Name */}
+              <img className="w-[40px] mr-2" src={Logo} alt="ShopNex Logo" />
               <h2 className="text-2xl font-bold font-serif tracking-tight">
                 ShopNex
               </h2>
@@ -50,53 +50,116 @@ const Header = () => {
           </Link>
         </motion.div>
 
-        {/* Navigation links with motion */}
+        {/* Desktop Nav */}
         <motion.nav
-          className="flex items-center space-x-6"
+          className="hidden md:flex items-center space-x-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Link
             to="/#hero"
-            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
+            className="nav-link text-lg font-semibold hover:text-gray-700"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
+            className="nav-link text-lg font-semibold hover:text-gray-700"
           >
             About Us
           </Link>
           <Link
             to="/#products"
-            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
+            className="nav-link text-lg font-semibold hover:text-gray-700"
           >
             Products
           </Link>
           <Link
             to="/contact"
-            className="font-semibold text-black text-lg hover:text-gray-700 hover:underline transition duration-300"
+            className="nav-link text-lg font-semibold hover:text-gray-700"
           >
             Contact
           </Link>
         </motion.nav>
 
-        {/* Cart icon with motion */}
-        <motion.div
-          onClick={() => setIsOpen(!isOpen)}
-          className="cursor-pointer flex relative"
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <BsBag className="text-2xl" />
-          <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
-            {itemAmount}
-          </div>
-        </motion.div>
+        {/* Cart & Mobile Menu Button */}
+        <div className="flex items-center space-x-4 md:hidden">
+          {/* Cart Icon */}
+          <motion.div
+            onClick={() => setIsOpen(!isOpen)}
+            className="cursor-pointer flex relative"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <BsBag className="text-2xl" />
+            <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
+              {itemAmount}
+            </div>
+          </motion.div>
+
+          {/* Mobile Menu Toggle */}
+          <button onClick={toggleMobileMenu}>
+            {mobileMenuOpen ? (
+              <HiX className="text-3xl" />
+            ) : (
+              <HiMenu className="text-3xl" />
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Fullscreen Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-50 bg-white flex flex-col pt-24 px-6"
+        >
+          {/* Close Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="absolute top-5 right-5 text-3xl"
+          >
+            <HiX />
+          </button>
+
+          {/* Nav Links */}
+          <nav className="flex flex-col items-start space-y-6 px-4 pt-4">
+            <Link
+              to="/#hero"
+              onClick={toggleMobileMenu}
+              className="text-2xl font-semibold hover:text-gray-700"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              onClick={toggleMobileMenu}
+              className="text-2xl font-semibold hover:text-gray-700"
+            >
+              About Us
+            </Link>
+            <Link
+              to="/#products"
+              onClick={toggleMobileMenu}
+              className="text-2xl font-semibold hover:text-gray-700"
+            >
+              Products
+            </Link>
+            <Link
+              to="/contact"
+              onClick={toggleMobileMenu}
+              className="text-2xl font-semibold hover:text-gray-700"
+            >
+              Contact
+            </Link>
+          </nav>
+        </motion.div>
+      )}
     </motion.header>
   );
 };
