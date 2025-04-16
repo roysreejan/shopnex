@@ -98,14 +98,14 @@ The live project is available at: `https://shopnexx.vercel.app/`
 To deploy:
 
 1. Install the Vercel CLI:
-
    ```bash
    npm install -g vercel
+   ```
 
 2. Deploy the project:
-
    ```bash
    vercel
+   ```
 
 ## Available Scripts
 
