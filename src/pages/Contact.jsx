@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="bg-gray-50 min-h-screen py-20 px-4 pt-32">
       <div className="max-w-5xl mx-auto flex flex-col items-center">

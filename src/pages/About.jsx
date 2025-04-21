@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion"; // Importing motion
 import { FaShoppingCart, FaHandshake } from "react-icons/fa"; // Adding icons for better visuals
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="min-h-screen py-20 px-4 pt-32 bg-white">
       <div className="max-w-6xl mx-auto text-center">
