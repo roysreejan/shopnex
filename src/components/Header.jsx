@@ -64,16 +64,16 @@ const Header = () => {
             Home
           </Link>
           <Link
-            to="/about"
-            className="nav-link text-lg font-semibold hover:text-gray-700"
-          >
-            About Us
-          </Link>
-          <Link
             to="/#products"
             className="nav-link text-lg font-semibold hover:text-gray-700"
           >
             Products
+          </Link>
+          <Link
+            to="/about"
+            className="nav-link text-lg font-semibold hover:text-gray-700"
+          >
+            About Us
           </Link>
           <Link
             to="/contact"
