@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="flex items-center mb-4">
             <Link to="/#hero" className="flex items-center">
               <div className="mr-3">
-                <img className="w-[40px]" src={Logo} alt="ShopNex Logo" />
+                <img className="w-[40px] filter invert" src={Logo} alt="ShopNex Logo" />
               </div>
               <h2 className="text-2xl font-bold font-serif tracking-tight">
                 ShopNex
@@ -118,7 +118,7 @@ const Footer = () => {
         transition={{ duration: 0.6, delay: 0.8 }}
         className="mt-12 text-center text-gray-500 text-sm"
       >
-        &copy; {new Date().getFullYear()} ShopNex. All rights reserved.
+        Copyright &copy; {new Date().getFullYear()} roysreejan.me. All rights reserved
       </motion.div>
     </motion.footer>
   );
